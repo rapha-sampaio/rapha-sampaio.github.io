@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<%
+let desc = "";
+if(body.indexOf("コンピュータ") != -1){desc = "プログラミングとコンテンツ翻訳を働くしています！複雑なアイデアをコンピュータープログラムに変換したり、英語・日本語・ポルトガル語間の翻訳が必要な場合は、僕にご連絡ください！";}
+if(body.indexOf("computer") != -1){desc = "I work with programming and content translation! If you need someone to transform a complex idea into a computer program or get something translated between English/Japanese and Portuguese, contact me!";}
+if(body.indexOf("computador") != -1){desc = "Trabalho com Programação e Tradução de Conteúdo! Se precisar transformar alguma ideia complicada em um programa de computador ou traduzir conteúdo entre Inglês/Japonês e Português, pode me contatar!";}
+%>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="<%= desc %>">
+    <title><%= site.title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/main.js"></script>
+    <link rel="icon" type="image/x-icon" href="/img/ico.png">
+</head>
+<%
+let pt_class = "";
+let ja_class = "";
+let en_class = "";
+
+if(body.indexOf("コンピュータ") != -1){ja_class = " current";}
+if(body.indexOf("computer") != -1){en_class = " current";}
+if(body.indexOf("computador") != -1){pt_class = " current";}
+%>
+
+<body>
+<div class="header">
+    <div class="lang-selector" onclick="toggle_menu();">
+        <span class="button"> <svg><use xlink:href="#lang"/></svg></span>
+    </div>
+    <div class="lang-selector-content" style="display: none;">
+        <div class="lang-name<%= pt_class %>"><a href="/">Português</a></div>
+        <div class="lang-name<%= ja_class %>"><a href="/ja">日本語</a></div>
+        <div class="lang-name<%= en_class %>"><a href="/en">English</a></div>
+    </div>
+    <h1>
+        <% if(body.indexOf("コンピュータ") != -1) { %>
+        <ruby>
+            Raphael
+            <rp></rp>
+            <rt>ラファエル</rt>
+            <rp></rp>&nbsp;Sampaio
+            <rp></rp>
+            <rt>サンパイオ</rt>
+            <rp></rp>&nbsp;Oliveira
+            <rp></rp>
+            <rt>オリベイラ</rt>
+            <rp></rp>
+        </ruby>
+        <% }else{ %>
+        Raphael Sampaio Oliveira
+        <% } %>
+    </h1>
+</div>
+
+<div class="content">
+    <div class="inner-content">
+        <%- body %>
+    </div>
+</div>
+
+<%- include('partials/lang_icon') %>
+</body>
+</html>
